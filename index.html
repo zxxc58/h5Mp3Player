@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>H5古典卡带播放器</title>
+		<link rel="stylesheet" type="text/css" href="css/animate.css"/>
+		<link rel="stylesheet" type="text/css" href="css/mp3.css"/>
+		<script src="js/jquery-1.11.3.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	
+	<body>
+		<div id="player">
+			<span class="wheel wheel-left anmiata"></span>
+			<span class="wheel wheel-right anmiata"></span>
+			<img class="card" src="img/cs_front.png" alt="" />
+		</div>
+		<div class="control">
+			<a href="javascript:0" id="last-song"><img class="btn-1" src="img/last.png"/></a>
+			<a href="javascript:0" id="start"><img src="img/start.png" alt="" /></a>
+			<a href="javascript:0" id="next-song"><img class="btn-1" src="img/next.png" alt="" /></a>	
+		</div>
+		<div >
+			<audio id="music" src="mp3/1.mp3" autoplay >不支持audio</audio>
+		</div>
+		
+	</body>
+	<script>
+		var audio=document.getElementById("music");
+		var btnStart=document.getElementById("start");
+		var btnLast=document.getElementById("last-song");
+		var btnNext=document.getElementById("next-song");
+		var state=1;//1为播放状态，0为暂停状态
+		var list=0;//记录歌曲的顺序
+		var music=["1.mp3","2.mp3","3.mp3"];
+		btnStart.onclick=function(){
+			if(state==0){
+				$("#start img").attr("src","img/start.png");
+				audio.play();
+				$("#player span").addClass("anmiata");
+				state=1;
+			}else if(state==1){
+				$("#start img").attr("src","img/pause.png");
+				audio.pause();
+				$("#player span").removeClass("anmiata");
+				state=0;
+			}
+			
+		}
+		btnLast.onclick=function(){
+			check();
+			if(list==0){
+				list=2;
+				audio.src="mp3/"+music[list];
+			}else{
+				audio.src="mp3/"+music[--list];
+			}
+		}
+		btnNext.onclick=function(){
+			check();
+			if(list==2){
+				list=0;
+				audio.src="mp3/"+music[list];
+			}else{
+				audio.src="mp3/"+music[++list];
+			}
+		}
+		function check(){
+			if(state==1){
+				$("audio").attr("autoplay","");
+				$("#player span").addClass("anmiata");
+				
+			}else if(state==0){
+				$("audio").removeAttr("autoplay");
+				$("#player span").removeClass("anmiata");
+			}
+		}
+	</script>
+</html>

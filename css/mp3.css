@@ -1,0 +1,63 @@
+*{
+			margin:0;
+			padding:0;
+			
+		}
+		a img{
+			display:block;
+			float: left;
+		}
+			body{
+				background: url(../img/82fLDu4.jpg) no-repeat center center;
+				background-attachment: fixed;
+				background-size:cover;
+			}
+			#player{
+				margin:0 auto;
+				margin-top:100px;
+				width:586px;
+				height: 379px;
+				position: relative;
+				background-image: url(../img/cs_back.png);
+				
+			}
+			.card{
+				position: absolute;
+				top:0;
+				left:0;
+			}
+			.wheel{
+				display: inline-block;
+				width: 125px;
+				height:125px;
+				background-image: url(../img/cs_wheel.png);
+				position: absolute;
+				border-radius: 50%;
+			}
+			.wheel-left{
+				top:110px;
+				left:109px;
+				box-shadow: 0 0 0 70px #000;
+			}
+			.wheel-right{
+				top:110px;
+				right:112px;
+			}
+			.control{
+				width:220px;
+				margin:0 auto;
+				border:1px solid rgba(200,200,200,0.5);
+				border-radius: 15%;
+			}
+			.control:before{
+				content: " ";
+				display:table;
+			}
+			.control:after{
+				content:" ";
+				display:table;
+				clear:both;
+			}
+			.btn-1{
+				padding:10px 30px;
+				}
